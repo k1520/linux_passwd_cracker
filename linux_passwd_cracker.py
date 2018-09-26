@@ -1,5 +1,7 @@
 #!/usr/bin/python2
+
 from crypt import *
+from time import sleep
 
 #Opening shadow_file to get values for variable todo manipulation
 
@@ -19,6 +21,7 @@ overall_hash=salt+"$"+encrypted_hash
 #print overall_hash
 
 print "[*]Cracking Password Of "+str(y[0])
+sleep(2)
 
 #Opening Dictionary to Compute Hash For Each and Every Password and check with encrypted hash to find passwd
 dictionary=open("top1000","r")
@@ -26,9 +29,10 @@ passwd=False
 for line in dictionary.readlines():
 	word=line.strip('\n')
 	hash=crypt(word,salt)
+	print "/\\/\\/\\/\\",
 	if hash==overall_hash:
 		passwd=word
 if passwd!=False:
-	print "[+]Password Found=",passwd	
+	print "\n\n[+]Password Found=",passwd	
 else:
-	print "[-]Password NOT Found Try Another Dictionary"
+	print "\n[-]Password NOT Found Try Another Dictionary"
