@@ -2,10 +2,11 @@
 
 from crypt import *
 from time import sleep
+from sys import argv
 
 #Opening shadow_file to get values for variable todo manipulation
 
-file=open("shadow_file","r")
+file=open(argv[1],"r")
 for word in file.readlines():
 	x=word
 #print x
